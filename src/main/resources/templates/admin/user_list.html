@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
+<head th:insert="~{common :: commonHead}">
+    <title>Admin - Users</title>
+</head>
+<body>
+<div class="container">
+    <h1>전체 사용자 목록</h1>
+    <table class="table">
+        <thead>
+        <tr><th>ID</th><th>Email</th><th>Roles</th></tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${users}">
+            <td th:text="${u.id}">ID</td>
+            <td th:text="${u.email}">Email</td>
+            <td>
+          <span th:each="r : ${u.roles}"
+                th:text="${r.rolename}" class="badge bg-secondary me-1">ROLE_USER</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
